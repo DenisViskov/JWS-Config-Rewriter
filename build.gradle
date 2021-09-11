@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.main'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
 
 def slf4j_version = '2.14.1'
 
