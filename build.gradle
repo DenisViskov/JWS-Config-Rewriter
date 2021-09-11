@@ -8,7 +8,7 @@ group = 'com.main'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-def slf4j_version = '1.7.32'
+def slf4j_version = '2.14.1'
 
 configurations {
     compileOnly {
@@ -21,8 +21,8 @@ repositories {
 }
 
 dependencies {
-    implementation ('org.springframework.boot:spring-boot-starter:2.5.4'){
-        exclude group : 'ch.qos.logback'
+    implementation('org.springframework.boot:spring-boot-starter:2.5.4') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
 
@@ -31,8 +31,9 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
 
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4j_version
-    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4j_version
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: slf4j_version
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: slf4j_version
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: slf4j_version
 }
 
 test {
