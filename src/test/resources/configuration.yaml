@@ -1,0 +1,37 @@
+- name: 21.x.x-SNAPSHOT.info
+  path: \..
+  values:
+    - oldValue: jedi.log.dir = D:\/RCLogs
+      newValue: RCLOGS_HOME
+
+
+- name: standalone.conf.bat
+  path: \bin
+  values:
+    - oldValue: set JAVA_OPTS=%JAVA_OPTS% -Djboss.server.log.dir=D:\RCLogs
+      newValue: RCLOGS_HOME
+
+
+- name: logging.properties
+  path: \standalone\configuration
+  values:
+    - oldValue: handler.FileInfo.FileInfoName=D\:\\RCLogs\\server.log
+      newValue: RCLOGS_HOME
+
+
+- name: wrapper-4.2.3.conf
+  path: \wrapper\conf
+  values:
+    - oldValue: wrapper.java.additional.101=-Djboss.server.log.dir=D:\/RCLogs
+      newValue: RCLOGS_HOME
+    - oldValue: wrapper.java.additional.103=-XX:HeapDumpPath=D:\/RCLogs
+      newValue: RCLOGS_HOME
+
+
+- name: wrapper.conf
+  path: \wrapper\conf
+  values:
+    - oldValue: wrapper.java.additional.101=-Djboss.server.log.dir=D:\/RCLogs
+      newValue: RCLOGS_HOME
+    - oldValue: wrapper.java.additional.103=-XX:HeapDumpPath=D:\/RCLogs
+      newValue: RCLOGS_HOME
