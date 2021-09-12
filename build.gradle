@@ -9,6 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 def slf4j_version = '2.14.1'
+def assertJ = '3.20.2'
 
 configurations {
     compileOnly {
@@ -36,6 +37,8 @@ dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: slf4j_version
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: slf4j_version
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: slf4j_version
+
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: assertJ
 }
 
 test {
