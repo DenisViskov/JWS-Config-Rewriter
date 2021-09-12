@@ -24,7 +24,9 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter:2.5.4') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
+    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.5.4') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
