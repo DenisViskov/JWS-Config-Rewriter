@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public class FileInfoHolder implements Storage<FileInfo> {
 
-    private static final String path = "/template/configuration.yaml" ;
+    private static final String PATH = "/template/configuration.yaml" ;
     private final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
     private List<FileInfo> fileInfoList;
 
@@ -26,7 +26,7 @@ public class FileInfoHolder implements Storage<FileInfo> {
     @PostConstruct
     private void readConfiguration() {
         log.info("Try to read configuration.yaml");
-        URL resource = FileInfoHolder.class.getResource(path);
+        URL resource = FileInfoHolder.class.getResource(PATH);
         JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
         fileInfoList = new ArrayList<>();
         fileInfoList = mapper.readValue(resource, javaType);
