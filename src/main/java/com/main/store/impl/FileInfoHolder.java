@@ -35,16 +35,16 @@ public class FileInfoHolder implements Storage<FileInfo> {
         initializePath();
         log.info("Try to read {}", FILE_NAME);
         log.info("Path: {}", path);
-        File resource = new File(path);
-        JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
+        final File resource = new File(path);
+        final JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
         fileInfoList = new ArrayList<>();
         fileInfoList = mapper.readValue(resource, javaType);
         log.info(FILE_NAME + ": {}", fileInfoList);
     }
 
     private void initializePath() {
-        String sourceCodePath = Paths.get("").toAbsolutePath().toString();
-        StringJoiner joiner = new StringJoiner(FileSystems.getDefault().getSeparator());
+        final String sourceCodePath = Paths.get("").toAbsolutePath().toString();
+        final StringJoiner joiner = new StringJoiner(FileSystems.getDefault().getSeparator());
         joiner.add(sourceCodePath);
         joiner.add(FILE_NAME);
         path = joiner.toString();
