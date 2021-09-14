@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.net.URL;
+import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class FileInfoHolder implements Storage<FileInfo> {
         initializePath();
         log.info("Try to read {}", FILE_NAME);
         log.info("Path: {}", path);
-        URL resource = FileInfoHolder.class.getResource(path);
+        File resource = new File(path);
         JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
         fileInfoList = new ArrayList<>();
         fileInfoList = mapper.readValue(resource, javaType);
@@ -45,7 +45,6 @@ public class FileInfoHolder implements Storage<FileInfo> {
     private void initializePath() {
         String sourceCodePath = Paths.get("").toAbsolutePath().toString();
         StringJoiner joiner = new StringJoiner(FileSystems.getDefault().getSeparator());
-        joiner.add("");
         joiner.add(sourceCodePath);
         joiner.add(FILE_NAME);
         path = joiner.toString();
