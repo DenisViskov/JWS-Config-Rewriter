@@ -12,6 +12,10 @@ def slf4j_version = '2.14.1'
 def assertJ = '3.20.2'
 def jackson = '2.12.5'
 
+def configuration_file = 'configuration.yaml'
+def from_source_path = 'build/resources/main/template'
+def to_target_path = 'build/libs'
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -49,4 +53,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task buildExecutableJar(type: Copy, dependsOn: bootJar) {
+    from(from_source_path)
+    into(to_target_path)
+    include(configuration_file)
 }

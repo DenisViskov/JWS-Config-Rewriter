@@ -11,26 +11,44 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 @Slf4j
 @Repository
 public class FileInfoHolder implements Storage<FileInfo> {
 
-    private static final String PATH = "/template/configuration.yaml" ;
+    private static final String FILE_NAME = "configuration.yaml";
+
+    private String path;
+
     private final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
     private List<FileInfo> fileInfoList;
 
     @SneakyThrows
     @PostConstruct
     private void readConfiguration() {
-        log.info("Try to read configuration.yaml");
-        URL resource = FileInfoHolder.class.getResource(PATH);
+        initializePath();
+        log.info("Try to read {}", FILE_NAME);
+        log.info("Path: {}", path);
+        URL resource = FileInfoHolder.class.getResource(path);
         JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
         fileInfoList = new ArrayList<>();
         fileInfoList = mapper.readValue(resource, javaType);
-        log.info("configuration.yaml: {}", fileInfoList);
+        log.info(FILE_NAME + ": {}", fileInfoList);
+    }
+
+    private void initializePath() {
+        String sourceCodePath = Paths.get("").toAbsolutePath().toString();
+        StringJoiner joiner = new StringJoiner(FileSystems.getDefault().getSeparator());
+        joiner.add("");
+        joiner.add(sourceCodePath);
+        joiner.add(FILE_NAME);
+        path = joiner.toString();
     }
 
     @Override
