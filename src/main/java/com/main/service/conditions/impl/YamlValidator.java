@@ -17,9 +17,13 @@ public class YamlValidator implements YamlCheck<Boolean, FileInfo> {
     public Boolean validate(Collection<FileInfo> values) {
         log.info("validating configuration.yaml values: {}", values);
         return values.stream()
-                .allMatch(val -> Objects.nonNull(val.getName()) && Objects.nonNull(val.getPath())
-                        && val.getValues().stream()
-                        .flatMap(unit -> Stream.of(unit.getOldValue(), unit.getNewValue()))
-                        .allMatch(Objects::nonNull));
+            .flatMap(file -> Stream.concat(
+                    Stream.of(file.getName(), file.getPath()),
+                    file.getValues().stream().flatMap(unit -> Stream.of(
+                        unit.getOldValue(),
+                        unit.getNewValue()
+                    ))
+                ))
+            .allMatch(Objects::nonNull);
     }
 }
