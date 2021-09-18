@@ -43,7 +43,7 @@ public class StorageBuilder {
         final JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, FileInfo.class);
         fileInfoList = new ArrayList<>();
         fileInfoList = mapper.readValue(resource, javaType);
-        log.info(fileName + ": {}", fileInfoList);
+        fileInfoList.forEach(file -> log.info(file.getName() + ": {}", file));
     }
 
     @Bean
