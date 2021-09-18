@@ -12,7 +12,7 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = JwsConfigRewriterApplication.class)
-class EnvironmentVariableCheckerTest {
+class EnvironmentVariableVerifierTest {
 
     @Autowired
     private EnvironmentCheck<Boolean, EnvironmentVariable> checker;

@@ -9,14 +9,14 @@ import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FileValidatorTest {
+class FileVerifierTest {
 
     private static FileCheck<Boolean, FileInfo> FILE_CHECKER;
 
     @BeforeAll
     static void beforeAll() {
         final String replacedPath = Paths.get("").toAbsolutePath().toString();
-        FILE_CHECKER = new FileValidator(replacedPath);
+        FILE_CHECKER = new FileVerifier(replacedPath);
     }
 
     @Test

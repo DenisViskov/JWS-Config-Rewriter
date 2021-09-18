@@ -12,7 +12,7 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class YamlValidatorTest {
+class YamlVerifierTest {
 
     @Autowired
     YamlCheck<Boolean, FileInfo> checker;

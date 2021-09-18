@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Slf4j
 @Service
-public class EnvironmentVariableChecker implements EnvironmentCheck<Boolean, EnvironmentVariable> {
+public class EnvironmentVariableVerifier implements EnvironmentCheck<Boolean, EnvironmentVariable> {
 
     @Override
     public Boolean checkEnvironmentVariables(Collection<EnvironmentVariable> variables) {

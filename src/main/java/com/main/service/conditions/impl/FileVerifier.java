@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class FileValidator implements FileCheck<Boolean, FileInfo> {
+public class FileVerifier implements FileCheck<Boolean, FileInfo> {
 
     private String jbossHomePath;
 

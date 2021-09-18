@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 @Slf4j
 @Service
-public class YamlValidator implements YamlCheck<Boolean, FileInfo> {
+public class YamlVerifier implements YamlCheck<Boolean, FileInfo> {
 
     @Override
     public Boolean validate(Collection<FileInfo> values) {
