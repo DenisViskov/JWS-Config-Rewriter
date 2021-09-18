@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,8 +19,8 @@ class EnvironmentVariableCheckerTest {
 
     @Test
     void checkEnvironmentVariables() {
-        Boolean result = checker.checkEnvironmentVariables(Arrays.asList(
-                EnvironmentVariable.JBOSS_HOME, EnvironmentVariable.RCLOGS_HOME));
+        Boolean result = checker.checkEnvironmentVariables(Collections.singletonList(
+                EnvironmentVariable.JBOSS_HOME));
         assertThat(result).isTrue();
     }
 }
