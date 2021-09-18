@@ -16,7 +16,7 @@ class FileValidatorTest {
     @BeforeAll
     static void beforeAll() {
         final String replacedPath = Paths.get("").toAbsolutePath().toString();
-        FILE_CHECKER = new FileValidator(new EnvironmentVariableChecker(), replacedPath);
+        FILE_CHECKER = new FileValidator(replacedPath);
     }
 
     @Test
