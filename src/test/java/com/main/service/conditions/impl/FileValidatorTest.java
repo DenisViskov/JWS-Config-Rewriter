@@ -54,10 +54,4 @@ class FileValidatorTest {
         fileInfo.setName("configuration.yaml");
         assertThat(FILE_CHECKER.isDirectory(fileInfo)).isFalse();
     }
-
-    @Test
-    void name() {
-        Path path = Paths.get("template","\\..").toAbsolutePath();
-        Path normalize = path.normalize();
-    }
 }
