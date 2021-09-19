@@ -1,4 +1,4 @@
-- name: 21.x.x-SNAPSHOT.info
+- name: 21.~.~-SNAPSHOT.info
   path: \..
   values:
     - oldValue: jedi.log.dir = D:\/RCLogs

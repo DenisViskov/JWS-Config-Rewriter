@@ -7,12 +7,11 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
-public class FileInfoHolder implements FileInfoStorage<FileInfo> {
+public class ParsedFileInfoHolder implements FileInfoStorage<FileInfo> {
 
     private List<FileInfo> fileInfoList;
 
-    @Override
-    public List<FileInfo> getAll() {
+    @Override public List<FileInfo> getAll() {
         return fileInfoList;
     }
 }

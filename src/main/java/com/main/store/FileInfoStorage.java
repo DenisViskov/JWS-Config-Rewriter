@@ -2,7 +2,7 @@ package com.main.store;
 
 import java.util.List;
 
-public interface Storage<T> {
+public interface FileInfoStorage<T> {
 
     List<T> getAll();
 }
