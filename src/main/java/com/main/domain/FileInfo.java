@@ -10,5 +10,6 @@ import java.util.List;
 public class FileInfo {
     private String name;
     private String path;
+    private boolean nameRegexp;
     private List<UnitValues<String, String>> values;
 }

@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class UnitValues<K, V> {
     private K oldValue;
     private V newValue;
+    private boolean oldValueRegexp;
 }
